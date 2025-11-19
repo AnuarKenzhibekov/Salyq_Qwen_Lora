@@ -277,10 +277,15 @@ class RetrievalMetricsCallback(TrainerCallback):
 # ==================== КАСТОМНЫЙ TRAINER ====================
 
 class ContrastiveTrainer(Trainer):
-    def compute_loss(self, model, inputs, return_outputs=False):
+    def compute_loss(self, model, inputs, return_outputs=False, **kwargs):
+        """
+        Совместимо с Trainer, который может передавать доп. аргументы
+        (например, num_items_in_batch).
+        """
         outputs = model(**inputs)
         loss = outputs["loss"]
         return (loss, outputs) if return_outputs else loss
+
 
 
 # ==================== MAIN ====================
