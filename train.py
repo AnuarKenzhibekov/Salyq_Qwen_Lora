@@ -384,6 +384,7 @@ def main():
     )
 
     # ---------- TRAINING ARGS ----------
+    # ---------- TRAINING ARGS ----------
     training_args = TrainingArguments(
         output_dir=args.output_dir,
         overwrite_output_dir=True,
@@ -402,8 +403,6 @@ def main():
 
         logging_steps=10,
         logging_first_step=True,
-        save_strategy="epoch",
-        evaluation_strategy="epoch",
         save_total_limit=3,
 
         load_best_model_at_end=False,
