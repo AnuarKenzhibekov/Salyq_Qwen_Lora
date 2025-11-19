@@ -1,0 +1,21 @@
+torch>=2.1.0
+torchvision>=0.16.0
+torchaudio>=2.1.0
+
+transformers>=4.37.2
+accelerate>=0.25.0
+datasets>=2.16.0
+
+peft>=0.9.0
+bitsandbytes>=0.43.0
+
+sentencepiece
+tqdm
+numpy
+
+# если на GPU NVIDIA (H100/H200/A100/3090 и т.д.)
+flash-attn==2.5.8
+
+
+# для совместимости embeddings через util.cos_sim
+sentence-transformers>=2.3.0
