@@ -12,10 +12,5 @@ bitsandbytes>=0.43.0
 sentencepiece
 tqdm
 numpy
-
-# если на GPU NVIDIA (H100/H200/A100/3090 и т.д.)
 flash-attn==2.5.8
-
-
-# для совместимости embeddings через util.cos_sim
 sentence-transformers>=2.3.0
