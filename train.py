@@ -327,13 +327,12 @@ def main():
         print(f"{k}: {v}")
     print("============================\n")
 
-    # ===== ЖЕСТКО ВЫБИРАЕМ GPU =====
-    gpu_index = 3  # <-- тут меняешь номер карты
+    # ===== ЖЕСТКО ВЫБИРАЕМ GPU ===== # <-- тут меняешь номер карты
 
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA недоступна")
 
-    torch.cuda.set_device(gpu_index)
+    device = torch.device("cuda")
     device = torch.device(f"cuda:{gpu_index}")
 
     print(f"[INFO] Используем device: {device}")
