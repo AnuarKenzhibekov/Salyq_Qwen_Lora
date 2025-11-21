@@ -22,7 +22,7 @@ from transformers import (
 
 from peft import LoraConfig, get_peft_model, TaskType
 
-
+os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 # ==================== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ====================
 
 def load_jsonl(path: str) -> List[Dict[str, Any]]:
@@ -321,7 +321,6 @@ def parse_args():
 
 
 def main():
-    os.environ["CUDA_VISIBLE_DEVICES"] = "3"
     args = parse_args()
 
     print("=== ПАРАМЕТРЫ ТРЕНИРОВКИ ===")
