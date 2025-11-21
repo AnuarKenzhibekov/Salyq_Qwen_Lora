@@ -27,7 +27,7 @@ from transformers import AutoTokenizer, AutoModel
 
 HF_MODEL_PATHS = {
     # имя модели в отчёте : путь/ID модели
-    "Fine-Tuned (Qwen3-SalyqAI)": "./qwen3_lora_salyqai",          # твой output_dir
+    "Fine-Tuned (Qwen3-SalyqAI)": "./qwen3_lora_salyqai_v1",          # твой output_dir
     "Base (Qwen3-Embedding-8B)": "Qwen/Qwen3-Embedding-8B",        # базовая
     # можешь добавить ещё любые HF-модели
 }
