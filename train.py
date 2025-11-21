@@ -1,5 +1,6 @@
 import json
 import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 import argparse
 from dataclasses import dataclass
 from typing import List, Dict, Any
