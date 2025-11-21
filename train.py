@@ -329,6 +329,8 @@ def main():
         print(f"{k}: {v}")
     print("============================\n")
 
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"[INFO] Используем device: {device}")
     # ---------- TOKENIZER ----------
     tokenizer = AutoTokenizer.from_pretrained(
         args.model_name,
