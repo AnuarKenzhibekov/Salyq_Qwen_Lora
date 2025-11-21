@@ -22,8 +22,7 @@ from transformers import (
 
 from peft import LoraConfig, get_peft_model, TaskType
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "3"
-# ==================== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ====================
+# ==================== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ =ф===================
 
 def load_jsonl(path: str) -> List[Dict[str, Any]]:
     data = []
@@ -328,8 +327,18 @@ def main():
         print(f"{k}: {v}")
     print("============================\n")
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # ===== ЖЕСТКО ВЫБИРАЕМ GPU =====
+    gpu_index = 3  # <-- тут меняешь номер карты
+
+    if not torch.cuda.is_available():
+        raise RuntimeError("CUDA недоступна")
+
+    torch.cuda.set_device(gpu_index)
+    device = torch.device(f"cuda:{gpu_index}")
+
     print(f"[INFO] Используем device: {device}")
+    print("current_device():", torch.cuda.current_device())
+    print("device_name:", torch.cuda.get_device_name())
     # ---------- TOKENIZER ----------
     tokenizer = AutoTokenizer.from_pretrained(
         args.model_name,
@@ -374,8 +383,9 @@ def main():
 
     base_model = get_peft_model(base_model, lora_config)
     base_model.print_trainable_parameters()
+    base_model.to(device)
 
-    model = QwenEmbeddingContrastiveModel(base_model, temperature=args.temperature)
+    model = QwenEmbeddingContrastiveModel(base_model, temperature=args.temperature).to(device)
 
     # ---------- DATA ----------
     train_ds = build_hf_dataset(args.train_file, add_instructions=True)
