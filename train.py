@@ -321,6 +321,7 @@ def parse_args():
 
 
 def main():
+    os.environ["CUDA_VISIBLE_DEVICES"] = "3"
     args = parse_args()
 
     print("=== ПАРАМЕТРЫ ТРЕНИРОВКИ ===")
@@ -347,7 +348,7 @@ def main():
         torch_dtype=dtype,
         attn_implementation="flash_attention_2",
         trust_remote_code=True,
-    )
+    ).to(device)
 
     if base_model.config.pad_token_id is None and tokenizer.pad_token_id is not None:
         base_model.config.pad_token_id = tokenizer.pad_token_id
