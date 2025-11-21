@@ -32,7 +32,7 @@ HF_MODEL_PATHS = {
     # можешь добавить ещё любые HF-модели
 }
 
-EVAL_FILE = "eval.jsonl"
+EVAL_FILE = "eval_3_shrink_neg.jsonl"
 BATCH_SIZE = 16            # для батчинга внутри одной модели
 MAX_QUERY_LEN = 128
 MAX_PASSAGE_LEN = 512
