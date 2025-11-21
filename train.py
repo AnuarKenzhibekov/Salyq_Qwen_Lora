@@ -333,7 +333,6 @@ def main():
         raise RuntimeError("CUDA недоступна")
 
     device = torch.device("cuda")
-    device = torch.device(f"cuda:{gpu_index}")
 
     print(f"[INFO] Используем device: {device}")
     print("current_device():", torch.cuda.current_device())
